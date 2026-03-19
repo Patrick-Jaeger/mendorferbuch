@@ -14,8 +14,8 @@ const Index = () => {
           <div className="hidden sm:block">
             <div className="speed-line" style={{ top: '20%', left: '5%', width: '60px' }} />
             <div className="speed-line" style={{ top: '50%', left: '2%', width: '40px' }} />
-            <div className="speed-line" style={{ top: '30%', right: '5%', width: '50px', background: 'linear-gradient(270deg, hsl(51 100% 50% / 0.6), transparent)' }} />
-            <div className="speed-line" style={{ top: '70%', right: '8%', width: '35px', background: 'linear-gradient(270deg, hsl(51 100% 50% / 0.6), transparent)' }} />
+            <div className="speed-line" style={{ top: '30%', right: '5%', width: '50px', background: 'linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)' }} />
+            <div className="speed-line" style={{ top: '70%', right: '8%', width: '35px', background: 'linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)' }} />
           </div>
           <h1
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-wider"
