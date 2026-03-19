@@ -64,13 +64,13 @@
 
 /* Background with broad diagonal accent stripes */
 .bg-sporty {
-  background-color: hsl(51 100% 50%);
+  background-color: hsl(48 50% 18%);
   background-image:
-    radial-gradient(ellipse at 0% 100%, hsl(51 100% 55% / 0.35) 0%, transparent 20%),
-    radial-gradient(ellipse at 100% 0%, hsl(51 100% 55% / 0.55) 0%, transparent 28%),
-    radial-gradient(ellipse at 0% 0%, hsl(0 0% 0% / 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 100% 100%, hsl(0 0% 0% / 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 50%, hsl(0 0% 0% / 0.08) 0%, transparent 75%);
+    radial-gradient(ellipse at 0% 100%, hsl(0 0% 0% / 0.35) 0%, transparent 20%),
+    radial-gradient(ellipse at 100% 0%, hsl(0 0% 0% / 0.55) 0%, transparent 28%),
+    radial-gradient(ellipse at 0% 0%, hsl(51 100% 50% / 0.60) 0%, transparent 60%),
+    radial-gradient(ellipse at 100% 100%, hsl(51 100% 50% / 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, hsl(51 100% 50% / 0.40) 0%, transparent 75%);
 }
 
 /* Header - clean gradient, no stripes */
