@@ -2,7 +2,7 @@ import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 
-const PDF_PATH = "pdf/dateiname.pdf";
+const PDF_PATH = "/ausschreibung.pdf";
 
 const Index = () => {
   return (
