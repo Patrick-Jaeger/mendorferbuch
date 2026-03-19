@@ -49,12 +49,14 @@ const Index = () => {
         {/* PDF Viewer */}
         <div className="pdf-card w-full max-w-4xl bg-card rounded-xl overflow-hidden">
           <div className="w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
-          <embed
-            src={PDF_PATH}
-            type="application/pdf"
-            className="w-full"
-            style={{ height: "calc(100vh - 200px)", minHeight: "600px" }}
-          />
+<object
+  data={PDF_PATH}
+  type="application/pdf"
+  className="w-full"
+  style={{ height: "calc(100vh - 200px)", minHeight: "600px" }}
+>
+  <p>PDF konnte nicht angezeigt werden.</p>
+</object>
         </div>
       </main>
 
