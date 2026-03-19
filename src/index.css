@@ -119,12 +119,12 @@
 .btn-sport {
   position: relative;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 16px hsl(51 100% 50% / 0.25);
+  box-shadow: 0 4px 16px hsl(0 0% 0% / 0.25);
 }
 
 .btn-sport:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px hsl(51 100% 50% / 0.4);
+  box-shadow: 0 6px 24px hsl(0 0% 0% / 0.4);
 }
 
 .btn-sport:active {
