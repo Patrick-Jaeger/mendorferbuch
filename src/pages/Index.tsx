@@ -20,8 +20,8 @@ const Index = () => {
           <h1
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-wider"
             style={{
-              color: 'hsl(51 100% 50%)',
-              textShadow: '0 2px 8px hsl(51 100% 50% / 0.3), 0 4px 20px hsl(0 0% 0% / 0.8)',
+              color: 'hsl(0 0% 0%)',
+              textShadow: '0 2px 8px hsl(0 0% 0% / 0.15), 0 4px 20px hsl(51 100% 50% / 0.3)',
             }}
           >
             Mini Mäuse Mendorferbuch
