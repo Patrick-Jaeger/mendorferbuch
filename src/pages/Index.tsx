@@ -53,16 +53,17 @@ const Index = () => {
         </Button>
 
         {/* PDF Viewer */}
-        <div className="pdf-card w-full max-w-4xl bg-card rounded-xl overflow-hidden">
-          <div className="w-full h-1 bg-gradient-to-r from-primary via-primary-foreground to-primary" />
-<object
-  data={PDF_PATH}
-  type="application/pdf"
-  className="w-full"
-  style={{ height: "calc(100vh - 200px)", minHeight: "600px" }}
->
-  <p>PDF konnte nicht angezeigt werden.</p>
-</object>
+        <div className="pdf-border-glow w-full max-w-4xl rounded-xl overflow-hidden">
+          <div className="bg-card rounded-xl overflow-hidden">
+            <object
+              data={PDF_PATH}
+              type="application/pdf"
+              className="w-full"
+              style={{ height: "calc(100vh - 200px)", minHeight: "600px" }}
+            >
+              <p>PDF konnte nicht angezeigt werden.</p>
+            </object>
+          </div>
         </div>
       </main>
 
