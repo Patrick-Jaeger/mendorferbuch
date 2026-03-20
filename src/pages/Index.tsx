@@ -29,13 +29,14 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center px-4 py-8 gap-6">
-        {/* Download Button */}
+        {/* Download Button 
         <Button asChild size="lg" className="btn-sport text-base font-bold tracking-wide rounded-lg">
           <a href={PDF_PATH} download>
             <Download className="mr-2" />
             PDF herunterladen
           </a>
         </Button>
+        */}
 
         {/* PDF Viewer */}
         <div className="pdf-border-glow w-full max-w-4xl rounded-xl overflow-hidden">
