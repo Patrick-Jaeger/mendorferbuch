@@ -54,7 +54,7 @@ const Index = () => {
 
         {/* PDF Viewer */}
         <div className="pdf-card w-full max-w-4xl bg-card rounded-xl overflow-hidden">
-          <div className="w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
+          <div className="w-full h-1 bg-gradient-to-r from-primary via-primary-foreground to-primary" />
 <object
   data={PDF_PATH}
   type="application/pdf"
