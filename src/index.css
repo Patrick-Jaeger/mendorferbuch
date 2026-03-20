@@ -65,7 +65,7 @@
 /* Background with 3 diagonal sections */
 .bg-sporty {
   background: linear-gradient(
-    135deg,
+    225deg,
     hsl(0 0% 0%) 0%,
     hsl(0 0% 0%) 28%,
     hsl(51 100% 50%) 33%,
