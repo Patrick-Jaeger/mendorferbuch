@@ -12,7 +12,6 @@ import pdf4 from "@/assets/ausschreibung4.jpg";
 // React-PDF-Viewer
 import { Worker, Viewer } from "@react-pdf-viewer/core";
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-import * as pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry"; // lokaler Worker
 
 const PDF_IMAGES = [pdf1, pdf2, pdf3, pdf4];
 const defaultLayoutPluginInstance = defaultLayoutPlugin();
@@ -23,29 +22,6 @@ const Index = () => {
       {/* Header */}
       <header className="header-dynamic w-full py-8 sm:py-10 px-4">
         <div className="relative z-10 max-w-5xl mx-auto text-center">
-          {/* Speed lines */}
-          <div className="hidden sm:block">
-            <div className="speed-line" style={{ top: "20%", left: "5%", width: "60px" }} />
-            <div className="speed-line" style={{ top: "50%", left: "2%", width: "40px" }} />
-            <div
-              className="speed-line"
-              style={{
-                top: "30%",
-                right: "5%",
-                width: "50px",
-                background: "linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)"
-              }}
-            />
-            <div
-              className="speed-line"
-              style={{
-                top: "70%",
-                right: "8%",
-                width: "35px",
-                background: "linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)"
-              }}
-            />
-          </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-wider text-black drop-shadow-lg">
             Mini Mäuse Mendorferbuch
           </h1>
@@ -62,7 +38,7 @@ const Index = () => {
 
             {/* Desktop: Interaktiver PDF-Viewer */}
             <div className="hidden sm:block h-[90vh] min-h-[600px] w-full overflow-auto">
-              <Worker workerUrl={pdfjsWorker}>
+              <Worker workerUrl="/pdf-worker/pdf.worker.min.js">
                 <Viewer
                   fileUrl={pdfFile}
                   plugins={[defaultLayoutPluginInstance]}
