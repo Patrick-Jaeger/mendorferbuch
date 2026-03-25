@@ -1,22 +1,26 @@
+import { useMemo } from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import pdfFile from "@/assets/ausschreibung.pdf";
 
-// alle Seiten als Array für Mobile
+// alle Seiten als Array importieren
 import pdf1 from "@/assets/ausschreibung1.jpg";
 import pdf2 from "@/assets/ausschreibung2.jpg";
 import pdf3 from "@/assets/ausschreibung3.jpg";
 import pdf4 from "@/assets/ausschreibung4.jpg";
 
-// React-PDF-Viewer
-import { Worker, Viewer } from "@react-pdf-viewer/core";
+import { Viewer, Worker } from "@react-pdf-viewer/core";
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 
+const PDF_PATH = pdfFile;
 const PDF_IMAGES = [pdf1, pdf2, pdf3, pdf4];
-const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
 const Index = () => {
+  const defaultLayoutPluginInstance = useMemo(() => defaultLayoutPlugin(), []);
+
   return (
     <div className="flex flex-col min-h-screen bg-sporty">
       {/* Header */}
@@ -32,22 +36,29 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center px-4 py-8 gap-6">
+      <main className="flex-1 flex flex-col items-center px-4 py-8 gap-6 w-full">
+        {/* PDF Viewer */}
         <div className="pdf-border-glow w-full max-w-4xl rounded-xl overflow-hidden">
-          <div className="bg-card rounded-xl overflow-hidden">
-
-            {/* Desktop: Interaktiver PDF-Viewer */}
-            <div className="hidden sm:block h-[90vh] min-h-[600px] w-full overflow-auto">
+          <div className="bg-card rounded-xl overflow-hidden w-full">
+            {/* Desktop: PDF Viewer */}
+            <div className="hidden sm:block w-full h-[90vh] min-h-[600px]">
               <Worker workerUrl="/pdf-worker/pdf.worker.min.js">
                 <Viewer
-                  fileUrl={pdfFile}
+                  fileUrl={PDF_PATH}
                   plugins={[defaultLayoutPluginInstance]}
                 />
               </Worker>
             </div>
 
-            {/* Mobile: Bilder + Button */}
-            <div className="sm:hidden flex flex-col items-center p-4 gap-4 overflow-auto w-full">
+            {/* Mobile: Bilder + Download */}
+            <div className="sm:hidden flex flex-col items-center p-4 gap-4">
+              <Button asChild size="lg" className="btn-sport font-bold">
+                <a href={PDF_PATH} target="_blank" rel="noopener noreferrer">
+                  <Download className="mr-2" />
+                  PDF öffnen
+                </a>
+              </Button>
+
               {PDF_IMAGES.map((img, idx) => (
                 <img
                   key={idx}
@@ -56,14 +67,7 @@ const Index = () => {
                   className="rounded-lg shadow-lg w-full"
                 />
               ))}
-              <Button asChild size="lg" className="btn-sport font-bold">
-                <a href={pdfFile} target="_blank" rel="noopener noreferrer">
-                  <Download className="mr-2" />
-                  PDF öffnen
-                </a>
-              </Button>
             </div>
-
           </div>
         </div>
       </main>
