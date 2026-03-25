@@ -2,14 +2,15 @@ import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 
-// PDF & Bilder direkt aus public
-const PDF_PATH = "/assets/ausschreibung.pdf";
-const PDF_IMAGES = [
-  "/assets/ausschreibung1.jpg",
-  "/assets/ausschreibung2.jpg",
-  "/assets/ausschreibung3.jpg",
-  "/assets/ausschreibung4.jpg",
-];
+// PDF & Bilder importieren
+import pdfFile from "@/assets/ausschreibung.pdf";
+import pdf1 from "@/assets/ausschreibung1.jpg";
+import pdf2 from "@/assets/ausschreibung2.jpg";
+import pdf3 from "@/assets/ausschreibung3.jpg";
+import pdf4 from "@/assets/ausschreibung4.jpg";
+
+const PDF_PATH = pdfFile;
+const PDF_IMAGES = [pdf1, pdf2, pdf3, pdf4];
 
 const Index = () => {
   return (
@@ -27,7 +28,7 @@ const Index = () => {
                 top: "30%",
                 right: "5%",
                 width: "50px",
-                background: "linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)"
+                background: "linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)",
               }}
             />
             <div
@@ -36,7 +37,7 @@ const Index = () => {
                 top: "70%",
                 right: "8%",
                 width: "35px",
-                background: "linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)"
+                background: "linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)",
               }}
             />
           </div>
@@ -51,15 +52,15 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center px-4 py-8 gap-6">
+        {/* PDF Viewer */}
         <div className="pdf-border-glow w-full max-w-4xl rounded-xl overflow-hidden">
           <div className="bg-card rounded-xl overflow-hidden">
-
-            {/* Desktop: scrollbarer iframe */}
-            <div className="hidden sm:block">
+            {/* Desktop: scrollbares iframe */}
+            <div className="hidden sm:block h-[90vh] overflow-auto">
               <iframe
                 src={PDF_PATH}
-                className="w-full"
-                style={{ height: "90vh", minHeight: "600px", border: "none", overflow: "auto" }}
+                className="w-full h-full"
+                style={{ border: "none" }}
                 title="PDF Viewer"
               />
             </div>
@@ -82,7 +83,6 @@ const Index = () => {
                 />
               ))}
             </div>
-
           </div>
         </div>
       </main>
