@@ -2,17 +2,26 @@ import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 
-// PDF & Bilder importieren
+// PDF-Datei
 import pdfFile from "@/assets/ausschreibung.pdf";
+
+// alle Seiten als JPGs für Mobile
 import pdf1 from "@/assets/ausschreibung1.jpg";
 import pdf2 from "@/assets/ausschreibung2.jpg";
 import pdf3 from "@/assets/ausschreibung3.jpg";
 import pdf4 from "@/assets/ausschreibung4.jpg";
 
-const PDF_PATH = pdfFile;
+// React-PDF-Viewer
+import { Worker, Viewer } from "@react-pdf-viewer/core";
+import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+
 const PDF_IMAGES = [pdf1, pdf2, pdf3, pdf4];
 
 const Index = () => {
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+
   return (
     <div className="flex flex-col min-h-screen bg-sporty">
       {/* Header */}
@@ -28,7 +37,7 @@ const Index = () => {
                 top: "30%",
                 right: "5%",
                 width: "50px",
-                background: "linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)",
+                background: "linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)"
               }}
             />
             <div
@@ -37,7 +46,7 @@ const Index = () => {
                 top: "70%",
                 right: "8%",
                 width: "35px",
-                background: "linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)",
+                background: "linear-gradient(270deg, hsl(0 0% 0% / 0.4), transparent)"
               }}
             />
           </div>
@@ -52,23 +61,22 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center px-4 py-8 gap-6">
-        {/* PDF Viewer */}
         <div className="pdf-border-glow w-full max-w-4xl rounded-xl overflow-hidden">
           <div className="bg-card rounded-xl overflow-hidden">
-            {/* Desktop: scrollbares iframe */}
-            <div className="hidden sm:block h-[90vh] overflow-auto">
-              <iframe
-                src={PDF_PATH}
-                className="w-full h-full"
-                style={{ border: "none" }}
-                title="PDF Viewer"
-              />
+            {/* Desktop: interaktiver PDF Viewer */}
+            <div className="hidden sm:block h-[90vh]">
+              <Worker workerUrl={`https://unpkg.com/pdfjs-dist@3.10.222/build/pdf.worker.min.js`}>
+                <Viewer
+                  fileUrl={pdfFile}
+                  plugins={[defaultLayoutPluginInstance]}
+                />
+              </Worker>
             </div>
 
-            {/* Mobile: Bilder + Button */}
+            {/* Mobile: JPGs + Button */}
             <div className="sm:hidden flex flex-col items-center p-4 gap-4">
               <Button asChild size="lg" className="btn-sport font-bold">
-                <a href={PDF_PATH} target="_blank" rel="noopener noreferrer">
+                <a href={pdfFile} target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2" />
                   PDF öffnen
                 </a>
