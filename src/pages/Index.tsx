@@ -55,15 +55,18 @@ const Index = () => {
     </div>
 
     {/* Mobile Button */}
-    <div className="sm:hidden p-6 flex justify-center">
-      <Button asChild size="lg" className="btn-sport font-bold">
-        <a href={PDF_PATH} target="_blank" rel="noopener noreferrer">
-          <Download className="mr-2" />
-          PDF öffnen
-        </a>
-      </Button>
-    </div>
+<div className="sm:hidden p-8 flex flex-col items-center gap-4">
+  <p className="text-black font-semibold">
+    PDF kann auf dem Handy nicht direkt angezeigt werden.
+  </p>
 
+  <Button asChild size="lg" className="btn-sport font-bold text-lg px-6 py-4">
+    <a href={PDF_PATH} target="_blank" rel="noopener noreferrer">
+      <Download className="mr-2" />
+      Ausschreibung als PDF öffnen
+    </a>
+  </Button>
+</div>
   </div>
 </div>
       </main>
