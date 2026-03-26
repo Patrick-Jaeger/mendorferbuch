@@ -1,78 +1,79 @@
-import { useMemo } from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import pdfFile from "@/assets/ausschreibung.pdf";
 
-// alle Seiten als Array importieren
 import pdf1 from "@/assets/ausschreibung1.jpg";
 import pdf2 from "@/assets/ausschreibung2.jpg";
 import pdf3 from "@/assets/ausschreibung3.jpg";
 import pdf4 from "@/assets/ausschreibung4.jpg";
 
-import { Viewer, Worker } from "@react-pdf-viewer/core";
-import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-import "@react-pdf-viewer/core/lib/styles/index.css";
-import "@react-pdf-viewer/default-layout/lib/styles/index.css";
-
 const PDF_PATH = pdfFile;
 const PDF_IMAGES = [pdf1, pdf2, pdf3, pdf4];
 
 const Index = () => {
-  const defaultLayoutPluginInstance = useMemo(() => defaultLayoutPlugin(), []);
-
   return (
     <div className="flex flex-col min-h-screen bg-sporty">
-      {/* Header */}
-      <header className="header-dynamic w-full py-8 sm:py-10 px-4">
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-wider text-black drop-shadow-lg">
+
+      {/* HEADER */}
+      <header className="header-dynamic w-full py-8 px-4">
+        <div className="max-w-5xl mx-auto text-center">
+          <h1 className="text-4xl font-black uppercase text-black">
             Mini Mäuse Mendorferbuch
           </h1>
-          <p className="mt-2 text-sm sm:text-base text-muted-foreground tracking-widest uppercase">
+          <p className="uppercase tracking-widest">
             Laufverein
           </p>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center px-4 py-8 gap-6 w-full">
-        {/* PDF Viewer */}
-        <div className="pdf-border-glow w-full max-w-4xl rounded-xl overflow-hidden">
-          <div className="bg-card rounded-xl overflow-hidden w-full">
-            {/* Desktop: PDF Viewer */}
-            <div className="hidden sm:block w-full h-[90vh] min-h-[600px]">
-              <Worker workerUrl="/pdf-worker/pdf.worker.min.js">
-                <Viewer
-                  fileUrl={PDF_PATH}
-                  plugins={[defaultLayoutPluginInstance]}
-                />
-              </Worker>
-            </div>
 
-            {/* Mobile: Bilder + Download */}
-            <div className="sm:hidden flex flex-col items-center p-4 gap-4">
-              <Button asChild size="lg" className="btn-sport font-bold">
-                <a href={PDF_PATH} target="_blank" rel="noopener noreferrer">
-                  <Download className="mr-2" />
-                  PDF öffnen
-                </a>
-              </Button>
+      {/* CONTENT */}
+      <main className="flex-1 flex flex-col items-center px-4 py-6 gap-6 w-full">
 
-              {PDF_IMAGES.map((img, idx) => (
-                <img
-                  key={idx}
-                  src={img}
-                  alt={`PDF Seite ${idx + 1}`}
-                  className="rounded-lg shadow-lg w-full"
-                />
-              ))}
-            </div>
+        <div className="w-full max-w-4xl rounded-xl overflow-hidden">
+
+          {/* DESKTOP PDF */}
+          <div className="hidden sm:block w-full">
+
+            <iframe
+              src={PDF_PATH + "#toolbar=1&navpanes=1&scrollbar=1"}
+              className="w-full"
+              style={{
+                height: "90vh",
+                border: "none"
+              }}
+            />
+
           </div>
+
+
+          {/* MOBILE */}
+          <div className="sm:hidden flex flex-col gap-4">
+
+            <Button asChild size="lg">
+              <a href={PDF_PATH} target="_blank">
+                <Download className="mr-2" />
+                PDF öffnen
+              </a>
+            </Button>
+
+            {PDF_IMAGES.map((img, i) => (
+              <img
+                key={i}
+                src={img}
+                className="w-full rounded-lg shadow"
+              />
+            ))}
+
+          </div>
+
         </div>
+
       </main>
 
       <Footer />
+
     </div>
   );
 };
